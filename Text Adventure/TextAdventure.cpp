@@ -520,7 +520,7 @@ int main()
 
 					if (speed <= 100)
 					{
-		 				cout << "You were unable to run away.\n";
+						cout << "You were unable to run away.\n";
 						HP = HP - 5;
 						cout << "The skeleton attacks! You lose 5 HP! (" << HP << "/" << maxHP << ")\n";
 						if (HP == 0 || HP < 0)
@@ -779,7 +779,14 @@ int main()
 				cout << "You take out the sword with ease. It's much nicer than your old one. You become more powerful!";
 				power = 10;
 			}
+
+			if (yourClass == "Mage")
+			{
+				cout << "Inside this room, a single scroll lies.\n";
+				cout << "";
+			}
 		}
+	}
 	return 0;
 }
 
