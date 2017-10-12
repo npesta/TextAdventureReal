@@ -895,7 +895,7 @@ int main()
 		{
 			if (variableThirteen == "yes")
 			{
-				cout << "Inside this room, you see, for some reason, you see gold on the ground.\n";
+				cout << "Inside this room, you see, for some reason, gold on the ground.\n";
 				cout << "You gain 50G!\n";
 				gold = gold + 50;
 				variableThirteen = "no";
