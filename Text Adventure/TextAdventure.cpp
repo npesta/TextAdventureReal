@@ -14,6 +14,7 @@ int main()
 	string choice;
 	string location;
 	string died;
+	string fire;
 	string variableOne;
 	string variableTwo;
 	string variableThree;
@@ -23,6 +24,10 @@ int main()
 	string variableSeven;
 	string variableEight;
 	string variableNine;
+	string variableTen;
+	string variableEleven;
+	string variableTwelve;
+	string variableThirteen;
 	int ratOne;
 	int newtOne;
 	int bossOne;
@@ -72,6 +77,14 @@ int main()
 
 	variableNine = "yes";
 
+	variableTen = "yes";
+
+	variableEleven = "yes";
+
+	variableTwelve = "no";
+
+	variableThirteen = "yes";
+
 	gold = 0;
 
 	if (yourClass == "Mage")
@@ -90,6 +103,8 @@ int main()
 		speed = 2;
 	}
 
+	fire = "no";
+
 	ratOne = 4;
 
 	newtOne = 6;
@@ -97,6 +112,16 @@ int main()
 	spiderOne = 8;
 
 	bossOne = 15;
+
+	if (name == "npesta")
+	{
+		cout << "HP?";
+		cin >> HP;
+		cout << "Attack?";
+		cin >> power;
+		cout << "Location?";
+		cin >> location;
+	}
 
 	while (choice != "z")
 	{
@@ -772,18 +797,114 @@ int main()
 
 		if (location == "lootThree")
 		{
-			if (yourClass == "Warrior")
+
+			if (variableTen == "yes")
 			{
-				cout << "Inside this room, a sword lies in a stone.\n";
-				cout << "Upon closer examination, you find out that the stone is talc.\n";
-				cout << "You take out the sword with ease. It's much nicer than your old one. You become more powerful!";
-				power = 10;
+				if (yourClass == "Warrior")
+				{
+					cout << "Inside this room, a sword lies in a stone.\n";
+					cout << "Upon closer examination, you find out that the stone is talc.\n";
+					cout << "You take out the sword with ease. It's much nicer than your old one. You become more powerful!\n";
+					power = 10;
+					variableTen = "no";
+				}
+
+				if (yourClass == "Mage")
+				{
+					cout << "Inside this room, a single scroll lies.\n";
+					cout << "This scroll gave you the information necessary to cast a fire spell!\n";
+					cout << "You can now use fire in battle! (f)\n";
+					cout << "This will be effective against some enemies, but not so much against others. Use your best judgement.\n";
+					fire = "yes";
+					variableTen = "no";
+				}
 			}
 
-			if (yourClass == "Mage")
+			if (variableTen == "no")
 			{
-				cout << "Inside this room, a single scroll lies.\n";
-				cout << "";
+				cout << "The only way you can go is back (s).\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					location = "bossOne";
+				}
+			}
+		}
+
+		if (location == "switchOne")
+		{
+			if (variableEleven == "yes")
+			{
+				cout << "Inside this room is a green switch.\n";
+				cout << "You press the switch, and you hear a rumbling sound in the distance.\n";
+				cout << "You can now move on to the next area!\n";
+				variableEleven ="no";
+				variableTwelve = "yes";
+			}
+			
+			if (variableEleven == "no")
+			{
+				cout << "The only way you can go is back. (s)\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					location = "bossOne";
+				}
+			}	
+		}
+
+		if (location == "doorOne")
+		{
+			if (variableTwelve == "yes")
+			{
+				cout << "The green door has now been opened.\n";
+				cout << "You can go through the door (e) or back (s).\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "e" || choice == "east")
+				{
+					location = "lootFour";
+				}
+
+				if (choice == "s" || choice == "south")
+				{
+					location = "healOne";
+				}
+			}
+
+			if (variableTwelve == "no")
+			{
+				cout << "In front of you lies a green door. You cannot open it with force.\n";
+				cout << "You can go back (s)\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					location = "healOne";
+				}
+			}
+		}
+
+		if (location == "lootFour")
+		{
+			if (variableThirteen == "yes")
+			{
+				cout << "Inside this room, you see, for some reason, you see gold on the ground.\n";
+				cout << "You gain 50G!\n";
+				gold = gold + 50;
+				variableThirteen = "no";
+			}
+
+			if (variableThirteen == "no")
+			{
+				cout << "End for now. More soon.";
+				cin >> choice;
 			}
 		}
 	}
