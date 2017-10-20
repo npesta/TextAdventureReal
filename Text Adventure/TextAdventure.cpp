@@ -15,6 +15,7 @@ int main()
 	string location;
 	string died;
 	string fire;
+	string electric;
 	string variableOne;
 	string variableTwo;
 	string variableThree;
@@ -28,6 +29,8 @@ int main()
 	string variableEleven;
 	string variableTwelve;
 	string variableThirteen;
+	string stick;
+	string goggles;
 	int ratOne;
 	int newtOne;
 	int bossOne;
@@ -37,6 +40,12 @@ int main()
 	int power;
 	int speed;
 	int gold;
+	int lv1healthpotion;
+	int lv2healthpotion;
+	int maxhealthpotion;
+	int lv1speedpotion;
+	int lv2speedpotion;
+	int maxspeedpotion;
 
 	cout << "Before we begin, I need to know your name. What is your name?\n";
 	cout << ">";
@@ -87,6 +96,22 @@ int main()
 
 	gold = 0;
 
+	lv1healthpotion = 0;
+
+	lv2healthpotion = 0;
+
+	maxhealthpotion = 0;
+
+	lv1speedpotion = 0;
+
+	lv2speedpotion = 0;
+
+	maxspeedpotion = 0;
+
+	stick = "no";
+
+	goggles = "no";
+
 	if (yourClass == "Mage")
 	{
 		maxHP = 30;
@@ -119,6 +144,8 @@ int main()
 		cin >> HP;
 		cout << "Attack?";
 		cin >> power;
+		cout << "Gold?";
+		cin >> gold;
 		cout << "Location?";
 		cin >> location;
 	}
@@ -813,7 +840,7 @@ int main()
 				{
 					cout << "Inside this room, a single scroll lies.\n";
 					cout << "This scroll gave you the information necessary to cast a fire spell!\n";
-					cout << "You can now use fire in battle! (f)\n";
+					cout << "You can now use fire in battle! (fs)\n";
 					cout << "This will be effective against some enemies, but not so much against others. Use your best judgement.\n";
 					fire = "yes";
 					variableTen = "no";
@@ -903,13 +930,478 @@ int main()
 
 			if (variableThirteen == "no")
 			{
-				cout << "End for now. More soon.";
+				cout << "You are in an empty room. You can go back, (s) forward, (n) or to your left (w).\n";
+				cout << ">";
 				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					location = "doorOne";
+				}
+
+				if (choice == "n" || choice == "north")
+				{
+					location = "shop";
+				}
+			}
+		}
+
+		if (location == "shop")
+		{
+			cout << "You enter the shop. The shopkeep is astounded that someone walked in.\n";
+			cout << "'Hello traveler. Please take a look at my wares.'\n";
+			cout << "Do you want to look at his products? (y or n)\n";
+			cout << ">";
+			cin >> choice;
+			
+			if (choice == "y" || choice == "yes")
+			{
+				cout << "You decide to take a look.\n";
+				choice == "";
+				location = "Shop1";
+			}
+			if (choice == "n" || choice == "no")
+			{
+				cout << "You tell him you aren't interested at the moment, and walk out.\n";
+				location = "lootFour";
+			}
+		}
+
+		if (location == "Shop1")
+		{
+			cout << "Level 1 Health Potion (1) (5G)\n";
+			cout << "Level 2 Health Potion (2) (10G)\n";
+			cout << "Max Health Potion (3) (30G)\n";
+			cout << "Level 1 Swiftness Potion (4) (5G)\n";
+			cout << "Level 2 Swiftness Potion (5) (10G)\n";
+			cout << "Max Swiftness Potion (6) (40G)\n";
+			cout << "Stick (7) (50G)\n";
+			cout << "Electric Spell (8) (50G)\n";
+			cout << "Goggles of All-Seeing (9) (100G)\n";
+			cout << "Select an option to learn more about an object/buy the object. You can also leave (s).\n";
+			cout << ">";
+			cin >> choice;
+
+			if (choice == "s" || choice == "south")
+			{
+				location = "lootFour";
+			}
+
+			if (choice == "1")
+			{
+				cout << "Level 1 Health Potion: Heals 5 HP.\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 5)
+					{
+						cout << "You bought the Level 1 Health Potion! Open your inventory (i) to use it.\n";
+						gold = gold - 5;
+						lv1healthpotion = lv1healthpotion + 1;
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 5)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+
+				if (choice == "n")
+				{
+					cout << "You decide to not buy the potion.\n";
+					location = "start";
+					location = "Shop1";
+					choice = "";
+				}
+			}
+
+			if (choice == "2")
+			{
+				cout << "Level 2 Health Potion: Heals 15 HP.\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 15)
+					{
+						cout << "You bought the Level 2 Health Potion! Open your inventory (i) to use it.\n";
+						gold = gold - 15;
+						lv2healthpotion = lv2healthpotion + 1;
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 15)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+
+				if (choice == "n")
+				{
+					cout << "You decide to not buy the potion.\n";
+					location = "start";
+					location = "Shop1";
+					choice = "";
+				}
+			}
+
+			if (choice == "3")
+			{
+				cout << "Max Health Potion: Heals all HP.\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 30)
+					{
+						cout << "You bought the Max Health Potion! Open your inventory (i) to use it.\n";
+						gold = gold - 30;
+						maxhealthpotion = maxhealthpotion + 1;
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 30)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+
+				if (choice == "n")
+				{
+					cout << "You decide to not buy the potion.\n";
+					location = "start";
+					location = "Shop1";
+					choice = "";
+				}
+			}
+
+			if (choice == "4")
+			{
+				cout << "Level 1 Swiftness Potion: Increases your speed by 5.\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 5)
+					{
+						cout << "You bought the Level 1 Swiftness Potion! Open your inventory (i) to use it.\n";
+						gold = gold - 5;
+						lv1speedpotion = lv1speedpotion + 1;
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 5)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+
+				if (choice == "n")
+				{
+					cout << "You decide to not buy the potion.\n";
+					location = "start";
+					location = "Shop1";
+					choice = "";
+				}
+			}
+
+			if (choice == "5")
+			{
+				cout << "Level 2 Swiftness Potion: Increases your speed by 15.\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 10)
+					{
+						cout << "You bought the Level 2 Swiftness Potion! Open your inventory (i) to use it.\n";
+						gold = gold - 10;
+						lv2speedpotion = lv2speedpotion + 1;
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 10)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+
+				if (choice == "n")
+				{
+					cout << "You decide to not buy the potion.\n";
+					location = "start";
+					location = "Shop1";
+					choice = "";
+				}
+			}
+
+			if (choice == "6")
+			{
+				cout << "Max Swiftness Potion: Allows you to escape from any monster (excluding bosses).\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 40)
+					{
+						cout << "You bought the Max Swiftness Potion! Open your inventory (i) to use it.\n";
+						gold = gold - 40;
+						maxspeedpotion = maxspeedpotion + 1;
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 40)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+
+				if (choice == "n")
+				{
+					cout << "You decide to not buy the potion.\n";
+					location = "start";
+					location = "Shop1";
+					choice = "";
+				}
+			}
+
+			if (choice == "7")
+			{
+				cout << "Stick: Literally just a stick.\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 50)
+					{
+						cout << "You bought the Stick! Open your inventory (i) to equip it.\n";
+						gold = gold - 50;
+						stick = "yes";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 50)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+			}
+
+			if (choice == "8")
+			{
+				if (yourClass == "Warrior")
+				{
+					cout << "You have to be a mage to use this item.\n";
+				}
+
+				if (yourClass == "Mage")
+				{
+					cout << "Electric Spell: Allows you to cast an electric spell.\n";
+					cout << "Do you wish to purchace this item? (y or n)\n";
+					cin >> choice;
+
+					if (choice == "y")
+					{
+						if (gold >= 50)
+						{
+							cout << "You bought the Electric Spell! You can now use it in battle (es).\n";
+							gold = gold - 50;
+							electric = "yes";
+							location = "start";
+							location = "Shop1";
+							choice = "";
+						}
+
+						else if (gold < 50)
+						{
+							cout << "You do not have enough gold to buy this item.\n";
+							location = "start";
+							location = "Shop1";
+							choice = "";
+						}
+					}
+
+					if (choice == "n")
+					{
+						cout << "You decide to not buy the Electric Spell.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+			}
+
+			if (choice == "9")
+			{
+				cout << "Goggles of All-Seeing: Allows you to see secret doors.\n";
+				cout << "Do you wish to purchace this item? (y or n)\n";
+				cin >> choice;
+
+				if (choice == "y")
+				{
+					if (gold >= 100)
+					{
+						cout << "You bought the Goggles of All-Seeing! If there is a secret door in the room, you will be notified.\n";
+						gold = gold - 100;
+						goggles = "yes";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+
+					else if (gold < 100)
+					{
+						cout << "You do not have enough gold to buy this item.\n";
+						location = "start";
+						location = "Shop1";
+						choice = "";
+					}
+				}
+			}
+		}
+
+		if (choice == "i" || choice == "inventory")
+		{
+			if (1 > 0)
+			{
+				cout << "You have " << lv1healthpotion << " Level 1 Health Potion(s). (1)\n";
+				cout << "You have " << lv2healthpotion << " Level 2 Health Potion(s). (2)\n";
+				cout << "You have " << maxhealthpotion << " Max Health Potion(s). (3)\n";
+				cout << "You have " << lv1speedpotion << " Level 1 Swiftness Potion(s). (4)\n";
+				cout << "You have " << lv2speedpotion << " Level 2 Swiftness Potion(s). (5)\n";
+				cout << "You have " << maxspeedpotion << " Max Speed Potion(s). (6)\n";
+				if (stick == "yes")
+				{
+					cout << "You have the stick. (7)\n";
+				}
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "1")
+				{
+					if (lv1healthpotion > 0)
+					{
+						cout << "You have used a Level 1 Health Potion. You gained 5 HP!\n";
+						lv1healthpotion = lv1healthpotion - 1;
+						HP = HP + 5;
+						if (HP > maxHP)
+						{
+							HP = maxHP;
+						}
+						cout << "You now have " << HP << " HP.\n";
+					}
+				}
+
+				if (choice == "2")
+				{
+					if (lv2healthpotion > 0)
+					{
+						cout << "You have used a Level 2 Health Potion. You gained 15 HP!\n";
+						lv2healthpotion = lv2healthpotion - 1;
+						HP = HP + 15;
+						if (HP > maxHP)
+						{
+							HP = maxHP;
+						}
+						cout << "You now have " << HP << " HP.\n";
+					}
+				}
+
+				if (choice == "3")
+				{
+					if (maxhealthpotion > 0)
+					{
+						cout << "You have used a Max Health Potion. You gained all HP.\n";
+						maxhealthpotion = maxhealthpotion - 1;
+						HP = maxHP;
+						cout << "You now have " << HP << " HP.\n";
+					}
+				}
+
+				if (choice == "4")
+				{
+					if (lv1speedpotion > 0)
+					{
+						cout << "You have used a Level 1 Swiftness Potion. Your speed increases by 5!\n";
+						lv1speedpotion = lv1speedpotion - 1;
+						speed = speed + 5;
+					}
+				}
+
+				if (choice == "5")
+				{
+					if (lv2speedpotion > 0)
+					{
+						cout << "You have used a Level 2 Swiftness Potion. Your speed increases by 15!\n";
+						lv2speedpotion = lv2speedpotion - 1;
+						speed = speed + 15;
+					}
+				}
+
+				if (choice == "6")
+				{
+					if (maxspeedpotion > 0)
+					{
+						cout << "You have used a Max Speed Potion. You can run away from any normal enemy!\n";
+						maxspeedpotion = maxspeedpotion - 1;
+						speed = 99;
+					}
+				}
+
+				if (choice == "7")
+				{
+					if (stick == "yes")
+					{
+						cout << "You equip the stick. You become... more powerful?\n";
+						power = 15;
+					}
+				}
 			}
 		}
 	}
 	return 0;
 }
-
-
-
