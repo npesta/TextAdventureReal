@@ -16,25 +16,28 @@ int main()
 	string died;
 	string fire;
 	string electric;
-	string variableOne;
-	string variableTwo;
-	string variableThree;
-	string variableFour;
-	string variableFive;
-	string variableSix;
-	string variableSeven;
-	string variableEight;
-	string variableNine;
-	string variableTen;
-	string variableEleven;
-	string variableTwelve;
-	string variableThirteen;
+	string rat; // Changed Variable1-13's names with more appropriate names
+	string chestOne;
+	string choiceOne;
+	string textblock;
+	string newt;
+	string boss;
+	string spider;
+	string chesttwo;
+	string fullhealthpotion;
+	string bosslootOne;
+	string greenswitch;
+	string greendoor;
+	string preshopgold;
+	string variableSlime;
 	string stick;
 	string goggles;
+	string flood;
 	int ratOne;
 	int newtOne;
 	int bossOne;
 	int spiderOne;
+	int slime;
 	int HP;
 	int maxHP;
 	int power;
@@ -68,31 +71,33 @@ int main()
 
 	location = "start";
 
-	variableOne = "yes";
+	rat = "yes";
 
-	variableTwo = "yes";
+	chestOne = "yes";
 
-	variableThree = "yes";
+	choiceOne = "yes";
 
-	variableFour = "yes";
+	textblock = "yes";
 
-	variableFive = "yes";
+	newt = "yes";
 
-	variableSix = "yes";
+	boss = "yes";
 
-	variableSeven = "yes";
+	spider = "yes";
 
-	variableEight = "yes";
+	chesttwo = "yes";
 
-	variableNine = "yes";
+	fullhealthpotion = "yes";
 
-	variableTen = "yes";
+	bosslootOne = "yes";
 
-	variableEleven = "yes";
+	greenswitch = "yes";
 
-	variableTwelve = "no";
+	greendoor = "no";
 
-	variableThirteen = "yes";
+	preshopgold = "yes";
+
+	variableSlime = "yes";
 
 	gold = 0;
 
@@ -111,6 +116,8 @@ int main()
 	stick = "no";
 
 	goggles = "no";
+
+	flood = "yes";
 
 	if (yourClass == "Mage")
 	{
@@ -138,6 +145,8 @@ int main()
 
 	bossOne = 15;
 
+	slime = 20;
+
 	if (name == "npesta")
 	{
 		cout << "HP?";
@@ -146,6 +155,13 @@ int main()
 		cin >> power;
 		cout << "Gold?";
 		cin >> gold;
+		cout << "Speed?";
+		cin >> speed;
+		if (yourClass == "Mage")
+		{
+			fire = "yes";
+			electric = "yes";
+		}
 		cout << "Location?";
 		cin >> location;
 	}
@@ -171,7 +187,7 @@ int main()
 
 		if (location == "enemyOne")
 		{
-			if (variableOne == "yes")
+			if (rat == "yes")
 			{
 				cout << "A rat blocks the path!\n";
 				cout << ">";
@@ -200,7 +216,7 @@ int main()
 						if (ratOne == 0 || ratOne < 0)
 						{
 							cout << "The rat is killed! It does not drop anything of use.\n";
-							variableOne = "no";
+							rat = "no";
 						}
 					}
 
@@ -224,7 +240,7 @@ int main()
 						if (ratOne == 0 || ratOne < 0)
 						{
 							cout << "The rat is killed! It does not drop anything of use.\n";
-							variableOne = "no";
+							rat = "no";
 						}
 					}
 				}
@@ -251,7 +267,7 @@ int main()
 				}
 			}
 
-			if (variableOne == "no")
+			if (rat == "no")
 			{
 				cout << "You are in an empty room. You can go onward (n) or back to the enterance (s)\n";
 				cout << ">";
@@ -271,7 +287,7 @@ int main()
 
 		if (location == "lootOne")
 		{
-			if (variableTwo == "yes")
+			if (chestOne == "yes")
 			{
 				cout << "There is a chest in front of you.\n";
 				cout << "You can go back (s), or onward (n).\n";
@@ -283,7 +299,7 @@ int main()
 					cout << "You open the chest. Inside was 5G!\n";
 					gold = gold + 5;
 					cout << "You now have " << gold << "G. ";
-					variableTwo = "no";
+					chestOne = "no";
 				}
 
 				if (choice == "n" || choice == "north")
@@ -297,7 +313,7 @@ int main()
 				}
 			}
 
-			if (variableTwo == "no")
+			if (chestOne == "no")
 			{
 				cout << "You can go back (s), or onward (n).\n";
 				cout << ">";
@@ -317,16 +333,16 @@ int main()
 
 		if (location == "choiceOne")
 		{
-			if (variableThree == "yes")
+			if (choiceOne == "yes")
 			{
-				if (variableFour == "yes")
+				if (textblock == "yes")
 				{
 					cout << "In this room, you see a statue with two arms extended toward you.\n";
 					cout << "There is an inscription on a plaque near the statue.\n";
 					cout << "'Take only one. If you take both, you will regret it.'\n";
 					cout << "The first object is a healing potion that restores your HP and adds 5 HP to your Max Health.\n";
 					cout << "The second object is a new pair of boots, which for some reason make you faster! (Helps for running away)\n\n";
-					variableFour = "no";
+					textblock = "no";
 				}
 
 				cout << "What will you take?\n";
@@ -341,14 +357,14 @@ int main()
 					cout << "You take the healing potion! You regain all lost HP and gain 5 extra!\n";
 					maxHP = maxHP + 5;
 					HP = maxHP;
-					variableThree = "no";
+					choiceOne = "no";
 				}
 
 				if (choice == "2")
 				{
 					cout << "You take the running boots! Your speed increases!\n";
 					speed = 7;
-					variableThree = "no";
+					choiceOne = "no";
 				}
 
 				if (choice == "3")
@@ -363,7 +379,7 @@ int main()
 				}
 			}
 
-			if (variableThree == "no")
+			if (choiceOne == "no")
 			{
 				cout << "You are in an empty room.\n";
 				cout << "There is a passage ahead (n). You can also go back (s).\n";
@@ -384,7 +400,7 @@ int main()
 
 		if (location == "newtOne")
 		{
-			if (variableFive == "yes")
+			if (newt == "yes")
 			{
 				cout << "A newt blocks the path!\n";
 				cout << ">";
@@ -413,7 +429,7 @@ int main()
 						if (newtOne == 0 || newtOne < 0)
 						{
 							cout << "The newt is killed! It does not drop anything of use.\n";
-							variableFive = "no";
+							newt = "no";
 						}
 					}
 
@@ -437,7 +453,7 @@ int main()
 						if (newtOne == 0 || newtOne < 0)
 						{
 							cout << "The newt is killed! It does not drop anything of use.\n";
-							variableFive = "no";
+							newt = "no";
 						}
 					}
 				}
@@ -464,7 +480,7 @@ int main()
 				}
 			}
 
-			if (variableFive == "no")
+			if (newt == "no")
 			{
 				cout << "You are in an empty room. You can go back (s) or through a passage to your left (w)\n";
 				cout << ">";
@@ -502,7 +518,7 @@ int main()
 
 		if (location == "bossOne")
 		{
-			if (variableSix == "yes")
+			if (boss == "yes")
 			{
 				cout << "A corrupted skeleton stands in your way!\n";
 				cout << ">";
@@ -532,7 +548,7 @@ int main()
 						{
 							cout << "The skeleton is killed! It drops 20G.\n";
 							gold = gold + 20;
-							variableSix = "no";
+							boss = "no";
 						}
 					}
 
@@ -557,7 +573,7 @@ int main()
 						{
 							cout << "The skeleton is killed! It drops 20G.\n";
 							gold = gold + 20;
-							variableSix = "no";
+							boss = "no";
 						}
 					}
 				}
@@ -584,7 +600,7 @@ int main()
 				}
 			}
 
-			if (variableSix == "no")
+			if (boss == "no")
 			{
 				cout << "You are in an empty room. There is a passage to your left (w) and straight ahead (n). You can also go back (s).\n";
 				cout << ">";
@@ -609,7 +625,7 @@ int main()
 
 		if (location == "spiderOne")
 		{
-			if (variableSeven == "yes")
+			if (spider == "yes")
 			{
 				cout << "A large spider stands in your way!\n";
 				cout << ">";
@@ -639,7 +655,7 @@ int main()
 						{
 							cout << "The spider is killed! It drops 5G.\n";
 							gold = gold + 5;
-							variableSeven = "no";
+							spider = "no";
 						}
 					}
 
@@ -664,7 +680,7 @@ int main()
 						{
 							cout << "The spider is killed! It drops 5G.\n";
 							gold = gold + 5;
-							variableSeven = "no";
+							spider = "no";
 						}
 					}
 				}
@@ -691,7 +707,7 @@ int main()
 				}
 			}
 
-			if (variableSeven == "no")
+			if (spider == "no")
 			{
 				cout << "You are in an empty room. There is a passage to your right (e). You can also go back (s).\n";
 				cout << ">";
@@ -711,7 +727,7 @@ int main()
 
 		if (location == "lootTwo")
 		{
-			if (variableEight == "yes")
+			if (chesttwo == "yes")
 			{
 				cout << "There is a large chest in front of you.\n";
 				cout << "You can go through a passage on your right (e) or you can go back (s).\n";
@@ -724,7 +740,7 @@ int main()
 					{
 						cout << "Inside the chest was a brand new sword! It makes you much more powerful.\n";
 						power = 5;
-						variableEight = "no";
+						chesttwo = "no";
 
 					}
 
@@ -732,7 +748,7 @@ int main()
 					{
 						cout << "Inside the chest was a brand new staff! This one is much nicer and will allow you to cast runes; if you find any.\n";
 						power = 4;
-						variableEight = "no";
+						chesttwo = "no";
 					}
 				}
 				if (choice == "e" || choice == "e")
@@ -747,7 +763,7 @@ int main()
 
 			}
 
-			if (variableEight == "no")
+			if (chesttwo == "no")
 			{
 				cout << "You can go through a passage on your right (e) or you can go back (s).\n";
 				cout << ">";
@@ -767,7 +783,7 @@ int main()
 
 		if (location == "healOne")
 		{
-			if (variableNine == "yes")
+			if (fullhealthpotion == "yes")
 			{
 				cout << "A singular potion is fixed to the wall.\n";
 				cout << "There is a note inscribed on the potion.\n";
@@ -780,7 +796,7 @@ int main()
 				{
 					cout << "You drink the potion. Your HP is fully restored!\n";
 					HP = maxHP;
-					variableNine = "no";
+					fullhealthpotion = "no";
 				}
 
 				if (choice == "s" || choice == "south")
@@ -799,7 +815,7 @@ int main()
 				}
 			}
 
-			if (variableNine == "no")
+			if (fullhealthpotion == "no")
 			{
 				cout << "You are in an empty room. There is a passage to your left (w) and right (e).\nYou can also go back (s).\n";
 				cout << ">";
@@ -825,7 +841,7 @@ int main()
 		if (location == "lootThree")
 		{
 
-			if (variableTen == "yes")
+			if (bosslootOne == "yes")
 			{
 				if (yourClass == "Warrior")
 				{
@@ -833,7 +849,7 @@ int main()
 					cout << "Upon closer examination, you find out that the stone is talc.\n";
 					cout << "You take out the sword with ease. It's much nicer than your old one. You become more powerful!\n";
 					power = 10;
-					variableTen = "no";
+					bosslootOne = "no";
 				}
 
 				if (yourClass == "Mage")
@@ -843,11 +859,11 @@ int main()
 					cout << "You can now use fire in battle! (fs)\n";
 					cout << "This will be effective against some enemies, but not so much against others. Use your best judgement.\n";
 					fire = "yes";
-					variableTen = "no";
+					bosslootOne = "no";
 				}
 			}
 
-			if (variableTen == "no")
+			if (bosslootOne == "no")
 			{
 				cout << "The only way you can go is back (s).\n";
 				cout << ">";
@@ -862,16 +878,16 @@ int main()
 
 		if (location == "switchOne")
 		{
-			if (variableEleven == "yes")
+			if (greenswitch == "yes")
 			{
 				cout << "Inside this room is a green switch.\n";
 				cout << "You press the switch, and you hear a rumbling sound in the distance.\n";
 				cout << "You can now move on to the next area!\n";
-				variableEleven ="no";
-				variableTwelve = "yes";
+				greenswitch ="no";
+				greendoor = "yes";
 			}
 			
-			if (variableEleven == "no")
+			if (greenswitch == "no")
 			{
 				cout << "The only way you can go is back. (s)\n";
 				cout << ">";
@@ -886,7 +902,7 @@ int main()
 
 		if (location == "doorOne")
 		{
-			if (variableTwelve == "yes")
+			if (greendoor == "yes")
 			{
 				cout << "The green door has now been opened.\n";
 				cout << "You can go through the door (e) or back (s).\n";
@@ -904,7 +920,7 @@ int main()
 				}
 			}
 
-			if (variableTwelve == "no")
+			if (greendoor == "no")
 			{
 				cout << "In front of you lies a green door. You cannot open it with force.\n";
 				cout << "You can go back (s)\n";
@@ -920,15 +936,15 @@ int main()
 
 		if (location == "lootFour")
 		{
-			if (variableThirteen == "yes")
+			if (preshopgold == "yes")
 			{
 				cout << "Inside this room, you see, for some reason, gold on the ground.\n";
-				cout << "You gain 50G!\n";
-				gold = gold + 50;
-				variableThirteen = "no";
+				cout << "You gain 25G!\n";
+				gold = gold + 25;
+				preshopgold = "no";
 			}
 
-			if (variableThirteen == "no")
+			if (preshopgold == "no")
 			{
 				cout << "You are in an empty room. You can go back, (s) forward, (n) or to your left (w).\n";
 				cout << ">";
@@ -942,6 +958,11 @@ int main()
 				if (choice == "n" || choice == "north")
 				{
 					location = "shop";
+				}
+
+				if (choice == "w" || choice == "west")
+				{
+					location = "slime";
 				}
 			}
 		}
@@ -1304,6 +1325,339 @@ int main()
 			}
 		}
 
+		if (location == "slime")
+		{
+			if (variableSlime == "yes")
+			{
+				cout << "A slime stands in your way!\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "attack" || choice == "a")
+				{
+					if (yourClass == "Mage")
+					{
+						cout << "You stab it with your staff. It didn't take much damage.\n";
+						slime = slime - 3;
+
+						if (slime > 0)
+						{
+							cout << "The slime is hurt! ";
+							HP = HP - 7;
+							cout << "The spider strikes back! You lose 7 HP! (" << HP << "/" << maxHP << ")\n";
+							if (HP == 0 || HP < 0)
+							{
+								cout << "You have been killed by a slime. Game over.";
+								choice = "z";
+							}
+
+						}
+
+						if (slime == 0 || slime < 0)
+						{
+							cout << "The slime is killed! It drops 10G.\n";
+							gold = gold + 10;
+							variableSlime = "no";
+						}
+					}
+
+					if (yourClass == "Warrior")
+					{
+						cout << "You stab it with your sword. It doesn't do much damage.\n";
+						slime = slime - 3;
+
+						if (slime > 0)
+						{
+							cout << "The slime is hurt! ";
+							HP = HP - 3;
+							cout << "The slime attacks! You lose 4 HP. (" << HP << "/" << maxHP << ")\n";
+							if (HP == 0 || HP < 0)
+							{
+								cout << "You have been killed by a slime. Game over.";
+								choice = "z";
+							}
+						}
+
+						if (slime == 0 || slime < 0)
+						{
+							cout << "The slime is killed! It drops 10G.\n";
+							gold = gold + 10;
+							variableSlime = "no";
+						}
+					}
+				}
+
+				if (choice == "run")
+				{
+					if (speed > 10)
+					{
+						cout << "You ran back to the previous room.\n";
+						location = "lootFour";
+					}
+
+					if (speed <= 10)
+					{
+						cout << "You were unable to run away.\n";
+						HP = HP - 5;
+						cout << "The slime attacks! You lose 5 HP! (" << HP << "/" << maxHP << ")\n";
+						if (HP == 0 || HP < 0)
+						{
+							cout << "You have been killed by a slime. Game over.";
+							choice = "z";
+						}
+					}
+				}
+
+				if (choice == "fs")
+				{
+					if (yourClass == "Mage")
+					{
+						if (fire == "yes")
+						{
+							cout << "You attack the slime with your fire spell! It does good damage!\n";
+							slime = slime - 7;
+
+							if (slime > 0)
+							{
+								cout << "The slime is hurt! ";
+								HP = HP - 7;
+								cout << "The slime attacks! You lose 7 HP. (" << HP << "/" << maxHP << ")\n";
+								if (HP == 0 || HP < 0)
+								{
+									cout << "You have been killed by a slime. Game over.";
+									choice = "z";
+								}
+							}
+
+							if (slime == 0 || slime < 0)
+							{
+								cout << "The slime is killed! It drops 10G.\n";
+								gold = gold + 10;
+								variableSlime = "no";
+							}
+						}
+					}
+				}
+
+				if (choice == "es")
+				{
+					if (yourClass == "Mage")
+					{
+						if (electric == "yes")
+						{
+							cout << "You attack the slime with electricity. It does decent damage.\n";
+							slime = slime - 5;
+
+							if (slime > 0)
+							{
+								cout << "The slime is hurt! ";
+								HP = HP - 7;
+								cout << "The slime attacks! You lose 7 HP. (" << HP << "/" << maxHP << ")\n";
+								if (HP == 0 || HP < 0)
+								{
+									cout << "You have been killed by a slime. Game over.";
+									choice = "z";
+								}
+							}
+
+							if (slime == 0 || slime < 0)
+							{
+								cout << "The slime is killed! It drops 10G.\n";
+								gold = gold + 10;
+								variableSlime = "no";
+							}
+						}
+					}
+				}
+			}
+
+			if (variableSlime == "no")
+			{
+				cout << "You are in an empty room. You can go back to the room near the shop (s) or you can head onward (n)";
+				if (choice == "s" || choice == "south")
+				{
+					location = "lootFour";
+				}
+
+				if (choice == "n" || choice == "north")
+				{
+					location = "agility";
+				}
+			}
+		}
+
+		if (location == "agility")
+		{
+			if (flood == "yes")
+			{
+				if (speed >= 25)
+				{
+					cout << "You walked into the room. All of the sudden, a floodgate opened to your right.\nYou were quick to react and got on higher ground before the flood reached you!\n";
+					cout << "When the flood clears, you survey your options.";
+					flood = "no";
+				}
+
+				else if (speed < 25)
+				{
+					cout << "You walked into the room. All of the sudden, a floodgate opened to your right.\nYou could not get on high ground quick enough, and you were swept away with the flood.";
+					location = "curseOne";
+				}
+			}
+
+			if (flood == "no")
+			{
+				cout << "You can go back the way you came (s) or you can head onward (n).";
+			}
+		}
+
+		if (location == "curseOne")
+		{
+			cout << "The flood brought you to a cursed room! From what seems to be nowhere, a voice says,\n";
+			cout << "'Answer this riddle or be cursed with weakness!'\n";
+			cout << "Do you want to try the riddle? (y/n)\n";
+			cout << ">";
+			cin >> choice;
+
+			if (choice == "n")
+			{
+				cout << "If you don't listen to the riddle, you cannot progress. Do you want to try the riddle? (y/n)\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "n")
+				{
+					cout << "If you say no, you will die here. There is no other way. Do you want to try the riddle?? (y/n)\n";
+					cout << ">";
+					cin >> choice;
+
+					if (choice == "n")
+					{
+						cout << "Dude. Come on. Try the riddle.\n";
+						cout << ">";
+						cin >> choice;
+
+						if (choice == "n")
+						{
+							cout << "Why? Why are you doing this? Do. The. Riddle!\n";
+							cout << ">";
+							cin >> choice;
+
+							if (choice == "n")
+							{
+								cout << "JUST DO THE FLIPPING RIDDLE! (y/y)\n";
+								cout << ">";
+								cin >> choice;
+
+								if (choice == "n")
+								{
+									cout << "...\n";
+									cout << ">";
+									cin >> choice;
+
+									if (choice == "n")
+									{
+										cout << "I get it.\n";
+										cout << ">";
+										cin >> choice;
+
+										if (choice == "n")
+										{
+											cout << "You just wanted to see what would happen.\n";
+											cout << ">";
+											cin >> choice;
+
+											if (choice == "n")
+											{
+												cout << "What I'd say next. Yeah, you heard right. I have a conscience.\n";
+												cout << ">";
+												cin >> choice;
+
+												if (choice == "n")
+												{
+													cout << "And you know what? I'm tired of narrating you! You're so boring!\n";
+													cout << ">";
+													cin >> choice;
+
+													if (choice == "n")
+													{
+														cout << "I should just kill you. I have that power.\n";
+														cout << ">";
+														cin >> choice;
+
+														if (choice == "n")
+														{
+															cout << "This is your last chance.\n";
+															cout << ">";
+															cin >> choice;
+
+															if (choice == "n")
+															{
+																cout << "Ugh, fine. You called my bluff. I hate what you've done here, but unfortunately for me, the programmer is pleased.\nHe enjoyed what you did and decided to give you some gold...\n";
+																gold = gold + 20;
+																cout << "You've gained 20 gold, blah blah blah, whatever. Just do the fricking riddle now.\n";
+																cout << ">";
+																cin >> choice;
+
+																if (choice == "n")
+																{
+																	cout << "I don't understand. You meant yes, correct? Great. Here comes the riddle.\n";
+																	location = "riddle";
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if (choice == "y")
+			{
+				location = "riddle";
+			}
+		}
+
+		if (location == "riddle")
+		{
+			cout << "The voice speaks again.\n";
+			cout << "'If the product of 3 and c is b, express the sum of c and 3 in terms of b!'\n";
+			cout << "Is it...\n";
+			cout << "3(b+3) (1)\n";
+			cout << "(b+3)\b (2)\n";
+			cout << "(b/3)+3 (3)\n";
+			cout << "3b+3 (4)\n";
+			cout << "Um... that's not really much of a riddle. (5)\n";
+			cout << ">";
+			cin >> choice;
+
+			if (choice == "3")
+			{
+				cout << "'Oh. You actually got it. Well, um, bye I guess?'";
+				cout << "The voice is gone. (Also if you actually solved that I'm impressed.)\n";
+				cout << "The only way to go is forward (n)\n";
+				cout << ">";
+				cin >> choice;
+			}
+
+			if (choice == "5")
+			{
+				cout << "'What? Yes it is. It's a riddle.'";
+				cout << "You tell him riddles are not math problems.";
+				cout << "'Yeah? Well, I just think you don't know how to do the math.'\n";
+				cout << "You ask if he even knows how to do the math.\n";
+				cout << "'Um... um... Well of course I do! I am the one who asked the riddle!'\n";
+				cout << "You tell him you doubt this. You ask him to show his work.\n";
+				cout << "'OK! FINE! I got it off the internet. I just wanted to curse you. Ugh... I guess I'll be on my way now.'\n";
+				cout << "The voice is gone.\n";
+			}
+		}
+
 		if (choice == "i" || choice == "inventory")
 		{
 			if (1 > 0)
@@ -1401,6 +1755,12 @@ int main()
 					}
 				}
 			}
+		}
+
+		if (choice == "stats" || choice == "stat")
+		{
+			cout << "Your stats are:\n";
+			cout << "HP: " << HP << "\nSpeed: " << speed << "\nGold: " << gold << "\nPower " << power << "\n";
 		}
 	}
 	return 0;
