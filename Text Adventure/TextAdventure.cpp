@@ -33,11 +33,14 @@ int main()
 	string stick;
 	string goggles;
 	string flood;
+	string fakechestenterance;
+	string powerchallenge;
 	int ratOne;
 	int newtOne;
 	int bossOne;
 	int spiderOne;
 	int slime;
+	int mimic;
 	int HP;
 	int maxHP;
 	int power;
@@ -99,6 +102,10 @@ int main()
 
 	variableSlime = "yes";
 
+	fakechestenterance = "yes";
+
+	powerchallenge = "yes";
+
 	gold = 0;
 
 	lv1healthpotion = 0;
@@ -146,6 +153,8 @@ int main()
 	bossOne = 15;
 
 	slime = 20;
+
+	mimic = 30;
 
 	if (name == "npesta")
 	{
@@ -1344,7 +1353,7 @@ int main()
 						{
 							cout << "The slime is hurt! ";
 							HP = HP - 7;
-							cout << "The spider strikes back! You lose 7 HP! (" << HP << "/" << maxHP << ")\n";
+							cout << "The slime strikes back! You lose 7 HP! (" << HP << "/" << maxHP << ")\n";
 							if (HP == 0 || HP < 0)
 							{
 								cout << "You have been killed by a slime. Game over.";
@@ -1473,7 +1482,9 @@ int main()
 
 			if (variableSlime == "no")
 			{
-				cout << "You are in an empty room. You can go back to the room near the shop (s) or you can head onward (n)";
+				cout << "You are in an empty room. You can go back to the room near the shop (s) or you can head onward (n)\n";
+				cout << ">";
+				cin >> choice;
 				if (choice == "s" || choice == "south")
 				{
 					location = "lootFour";
@@ -1493,20 +1504,32 @@ int main()
 				if (speed >= 25)
 				{
 					cout << "You walked into the room. All of the sudden, a floodgate opened to your right.\nYou were quick to react and got on higher ground before the flood reached you!\n";
-					cout << "When the flood clears, you survey your options.";
+					cout << "When the flood clears, you survey your options.\n";
 					flood = "no";
 				}
 
 				else if (speed < 25)
 				{
-					cout << "You walked into the room. All of the sudden, a floodgate opened to your right.\nYou could not get on high ground quick enough, and you were swept away with the flood.";
+					cout << "You walked into the room. All of the sudden, a floodgate opened to your right.\nYou could not get on high ground quick enough, and you were swept away with the flood.\n";
 					location = "curseOne";
 				}
 			}
 
 			if (flood == "no")
 			{
-				cout << "You can go back the way you came (s) or you can head onward (n).";
+				cout << "You can go back the way you came (s) or you can head onward (n).\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					location = "slime";
+				}
+
+				if (choice == "n" || choice == "north")
+				{
+					location = "redDoor";
+				}
 			}
 		}
 
@@ -1640,22 +1663,382 @@ int main()
 			{
 				cout << "'Oh. You actually got it. Well, um, bye I guess?'";
 				cout << "The voice is gone. (Also if you actually solved that I'm impressed.)\n";
-				cout << "The only way to go is forward (n)\n";
+				cout << "The only direction you can go is forward. (n). The way back from where you came from is blocked.\n";
 				cout << ">";
 				cin >> choice;
+
+				if (choice == "n" || choice == "north")
+				{
+					location = "fakechestOne";
+				}
 			}
 
 			if (choice == "5")
 			{
-				cout << "'What? Yes it is. It's a riddle.'";
-				cout << "You tell him riddles are not math problems.";
+				cout << "'What? Yes it is. It's a riddle.'\n";
+				cout << "You tell him riddles are not math problems.\n";
 				cout << "'Yeah? Well, I just think you don't know how to do the math.'\n";
 				cout << "You ask if he even knows how to do the math.\n";
 				cout << "'Um... um... Well of course I do! I am the one who asked the riddle!'\n";
 				cout << "You tell him you doubt this. You ask him to show his work.\n";
 				cout << "'OK! FINE! I got it off the internet. I just wanted to curse you. Ugh... I guess I'll be on my way now.'\n";
 				cout << "The voice is gone.\n";
+				cout << "The only direction you can go is forward. (n). The way back from where you came from is blocked.\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "n" || choice == "north")
+				{
+					location = "fakechestOne";
+				}
 			}
+
+			if (choice != "3" && choice != "5")
+			{
+				cout << "'Incorrect! I curse you with eternal weakness!'\n";
+				cout << "You become weaker, losing a little power.\n";
+				power = power - 5;
+				cout << "The voice then leaves.\n";
+				cout << "The only direction you can go is forward. (n) The way back from where you came from is blocked.\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "n" || choice == "north")
+				{
+					location = "fakechestOne";
+				}
+			}
+		}
+
+		if (location == "fakechestOne")
+		{
+			if (fakechestenterance == "yes")
+			{
+				cout << "There is a chest in this room. (o)\n";
+				cout << "There is nothing behind you. You can go east.\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					cout << "There is nothing behind you worth going back for.\n";
+				}
+
+				if (choice == "w" || choice == "west")
+				{
+					location = "redDoor";
+				}
+
+				if (choice == "o" || choice == "open")
+				{
+					cout << "You open the chest.\n";
+					cout << "However, you soon discover that it is no ordinary chest.\n";
+					cout << "Before you could react, the Mimic attacked you!\n";
+					fakechestenterance = "no";
+				}
+			}
+
+			if (fakechestenterance == "no")
+			{
+				cout << "A Mimic stands in your way!\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "attack" || choice == "a")
+				{
+					if (yourClass == "Mage")
+					{
+						cout << "You stab it with your staff.\n";
+						mimic = mimic - power;
+
+						if (mimic > 0)
+						{
+							cout << "The mimic is hurt! ";
+							HP = HP - 8;
+							cout << "The mimic bites back! You lose 8 HP! (" << HP << "/" << maxHP << ")\n";
+							if (HP == 0 || HP < 0)
+							{
+								cout << "You have been killed by a mimic. Game over.";
+								choice = "z";
+							}
+
+						}
+
+						if (mimic == 0 || mimic < 0)
+						{
+							cout << "The mimic is killed! It drops 20G.\n";
+							gold = gold + 20;
+							fakechestenterance = "dead";
+						}
+					}
+
+					if (yourClass == "Warrior")
+					{
+						cout << "You stab it with your sword.\n";
+						slime = slime - power;
+
+						if (mimic > 0)
+						{
+							cout << "The mimic is hurt! ";
+							HP = HP - 4;
+							cout << "The mimic bites back! You lose 4 HP. (" << HP << "/" << maxHP << ")\n";
+							if (HP == 0 || HP < 0)
+							{
+								cout << "You have been killed by a mimic. Game over.";
+								choice = "z";
+							}
+						}
+
+						if (mimic == 0 || mimic < 0)
+						{
+							cout << "The mimic is killed! It drops 20G.\n";
+							gold = gold + 20;
+							fakechestenterance = "dead";
+						}
+					}
+				}
+
+				if (choice == "run")
+				{
+					if (speed > 10)
+					{
+						cout << "The Mimic blocks your only exit.\n";
+					}
+
+					if (speed <= 10)
+					{
+						cout << "You were unable to run away.\n";
+						HP = HP - 5;
+						cout << "The Mimic attacks! You lose 5 HP! (" << HP << "/" << maxHP << ")\n";
+						if (HP == 0 || HP < 0)
+						{
+							cout << "You have been killed by a mimic. Game over.";
+							choice = "z";
+						}
+					}
+				}
+
+				if (choice == "fs")
+				{
+					if (yourClass == "Mage")
+					{
+						if (fire == "yes")
+						{
+							cout << "You attack the mimc with your fire spell! It does critical damage!\n";
+							mimic = mimic - 15;
+
+							if (mimic > 0)
+							{
+								cout << "The mimic is hurt! ";
+								HP = HP - 8;
+								cout << "The mimic attacks! You lose 8 HP. (" << HP << "/" << maxHP << ")\n";
+								if (HP == 0 || HP < 0)
+								{
+									cout << "You have been killed by a mimic. Game over.";
+									choice = "z";
+								}
+							}
+
+							if (mimic == 0 || mimic < 0)
+							{
+								cout << "The mimic is killed! It drops 20G.\n";
+								gold = gold + 20;
+								fakechestenterance = "dead";
+							}
+						}
+					}
+				}
+
+				if (choice == "es")
+				{
+					if (yourClass == "Mage")
+					{
+						if (electric == "yes")
+						{
+							cout << "You attack the mimic with electricity. It does decent damage.\n";
+							mimic = mimic - 7;
+
+							if (mimic > 0)
+							{
+								cout << "The mimic is hurt! ";
+								HP = HP - 8;
+								cout << "The mimic attacks! You lose 8 HP. (" << HP << "/" << maxHP << ")\n";
+								if (HP == 0 || HP < 0)
+								{
+									cout << "You have been killed by a mimic. Game over.";
+									choice = "z";
+								}
+							}
+
+							if (mimic == 0 || mimic < 0)
+							{
+								cout << "The mimic is killed! It drops 20G.\n";
+								gold = gold + 20;
+								fakechestenterance = "dead";
+							}
+						}
+					}
+				}
+			}
+
+			if (fakechestenterance == "dead")
+			{
+				cout << "You are in an empty room. There is nothing behind you. You can go east (e).\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					cout << "There is nothing worth going back for.";
+				}
+
+				if (choice == "e" || choice == "east")
+				{
+					location = "redDoor";
+				}
+			}
+		}
+
+		if (location == "redDoor")
+		{
+			cout << "You are standing in front of a red door. It cannot be opened by force.\n";
+			cout << "You can go back to the once flooded room (s) or to your right (e)\n";
+			cout << ">";
+			cin >> choice;
+
+			if (choice == "s" || choice == "south")
+			{
+				location = "agility";
+			}
+
+			if (choice == "e" || choice == "east")
+			{
+				location = "powerchallenge";
+			}
+		}
+
+		if (location == "powerchallenge")
+		{
+			if (powerchallenge == "yes")
+			{
+				cout << "Inside this room is a target. A note is inscribed next to it.\n";
+				cout << "'Hit the target with as much force as possible to win the prize!'\n";
+				cout << "Although it is a rather weird thing to find in a dungeon, you decide to play anyway.\n";
+				cout << "Hit it with force (1-10)\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "1")
+				{
+					cout << "You pat in gently with your hand.\n";
+					cout << "In fact, it was so weak that the game didn't even recognize you hit it.\n";
+					cout << "You leave the room out of dissapointment.\n";
+					location = "redDoor";
+				}
+
+				if (choice == "2")
+				{
+					cout << "You give it a little tap.\n";
+					cout << "You didn't hit it nearly as hard as you needed to.\n";
+					cout << "Unfortunately, you cannot try again.\n";
+					powerchallenge = "no";
+				}
+
+				if (choice == "3")
+				{
+					cout << "You gently hit the target.\n";
+					cout << "You didn't hit it nearly as hard as you needed to.\n";
+					cout << "Unfortunately, you cannot try again.\n";
+					powerchallenge = "no";
+				}
+
+				if (choice == "4")
+				{
+					cout << "You hit the target.\n";
+					cout << "You didn't hit it as hard as you needed to.\n";
+					cout << "Unfortunately, you cannot try again.\n";
+					powerchallenge = "no";
+				}
+
+				if (choice == "5")
+				{
+					cout << "You hit the target with force.\n";
+					cout << "You didn't hit it as hard as you needed to.\n";
+					cout << "Unfortunately, you cannot try again.\n";
+					powerchallenge = "no";
+				}
+
+				if (choice == "6")
+				{
+					cout << "You hit the target with force.\n";
+					cout << "You didn't hit it as hard as you needed to.\n";
+					cout << "Unfortunately, you cannot try again.\n";
+					powerchallenge = "no";
+				}
+
+				if (choice == "7")
+				{
+					cout << "You punch the target with a good amount of force.\n";
+					cout << "You won! You got 20G from the game.\n";
+					gold = gold + 20;
+					powerchallenge = "no";
+				}
+
+				if (choice == "8")
+				{
+					cout << "You punch the target with a good amount of force.\n";
+					cout << "You won! You got 20G from the game.\n";
+					gold = gold + 20;
+					powerchallenge = "no";
+				}
+
+				if (choice == "9")
+				{
+					cout << "You punch the target with a lot of force.\n";
+					cout << "You hit it too hard! Instead of winning the game, you broke the target!\n";
+					cout << "You cannot try again.\n";
+					powerchallenge = "no";
+				}
+
+				if (choice == "10")
+				{
+					cout << "You punch the target with all of your force.\n";
+					cout << "You hit it too hard! Instead of winning the game, you broke the target!\n";
+					cout << "You cannot try again.\n";
+					powerchallenge = "no";
+				}
+
+				if (choice == "11")
+				{
+					cout << "Using the energy of all living things, you create a beam of light and throw it at the target.\n";
+					cout << "This makes the game explode.\n";
+					cout << "You cannot try again.\n";
+					powerchallenge = "no";
+				}
+			}
+
+			if (powerchallenge == "no")
+			{
+				cout << "You are in an empty room. You can go back to the red door (s) or to your right (e).\n";
+				cout << ">";
+				cin >> choice;
+
+				if (choice == "s" || choice == "south")
+				{
+					location = "redDoor";
+				}
+
+				if (choice == "e" || choice == "east")
+				{
+					location = "prebossTwo";
+				}
+			}
+		}
+
+		if (location == "prebossTwo")
+		{
+			cout << "Once again, you see a super menacing dangerous-looking door. Make sure you are prepared.\n";
+			cout << "If you wish to enter, press (n). If you want to go back, press (s).\n";
 		}
 
 		if (choice == "i" || choice == "inventory")
